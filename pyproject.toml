@@ -8,3 +8,35 @@ dependencies = []
 
 [project.scripts]
 repo-md = "repo_md.__main__:main"
+
+[project.optional-dependencies]
+test = [
+  "pytest",
+  "pytest-cov",
+  "coverage[toml]>=6.5",
+  "mypy",
+  "ruff",
+  "types-PyYAML",
+]
+
+[tool.ruff]
+line-length = 88
+indent-width = 4
+exclude = [
+    ".venv",
+    ".git",
+    ".pytest_cache",
+    ".mypy_cache",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "S", "N", "I", "ARG"]
+
+[tool.ruff.format]
+quote-style = "single"
+line-ending = "auto"
+docstring-code-format = false
+docstring-code-line-length = "dynamic"
+
+[tool.ruff.lint.flake8-quotes]
+inline-quotes = "single"
