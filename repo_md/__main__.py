@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Collects code via glob patterns into a single markdown file for LLM context.
+"""Concatenates text files via glob patterns into a single markdown file for LLMs.
 
 This script processes one or more glob patterns to create a formatted markdown output
 of source code files, designed for sharing with Large Language Models (LLMs).
@@ -20,7 +20,7 @@ Options:
 
 Examples:
     # Share model and specs, excluding node_modules/ build files
-    repo-md '**/*.rb' '**/*_spec.rb' --ignore-glob 'node_modules/**/*'
+    repo-md '**/*.rb' '**/*.ts' --ignore-glob 'node_modules/**/*'
 
     # Share an entire feature's worth of code, with line numbers for debugging
     repo-md 'app/{models,controllers}/payment/**/*' --include-ln
