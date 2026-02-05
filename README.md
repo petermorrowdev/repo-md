@@ -25,42 +25,33 @@ pip install git+https://github.com/petermorrowdev/repo-md
 
 ## Usage
 
+Share all Python and TypeScript files in the current directory and subdirectories.
+
+```bash
+repo-md '**/*.py' '**/*.ts' | pbcopy
 ```
-$ repo-md --help
-usage: repo-md [-h] [--ignore-glob IGNORE_GLOB] [--include-ln]
-               glob_patterns [glob_patterns ...]
 
-Collects code via glob patterns into a single markdown file for LLM context.
+Share only core Rails components (models and controllers).
 
-This script processes one or more glob patterns to create a formatted markdown output
-of source code files, designed for sharing with Large Language Models (LLMs).
+```bash
+repo-md 'app/{models,controllers}/**/*.rb' | xclip
+```
 
-For each matching file, it outputs:
-- A markdown header with the relative file path.
-- Source code content enclosed in a language-specific fenced markdown block.
+Use the --ignore-glob flag to exclude files from build tools, dependencies, or caches.
 
-The default output is token-efficient (no line numbers). Use --include-ln for specific
-line-based LLM feedback.
+```bash
+repo-md '**/*.go' --ignore-glob 'vendor/**/*'
+```
 
-Usage:
-    repo-md [options] <glob_pattern> [<glob_pattern> ...]
+Include line numbers when you want to ask the LLM "needle in haystack" style questions
+like "Where do we call the stripe API? Respond with precise path and line numbers."
 
-Options:
-    --include-ln    Includes line numbers
-    --ignore-glob   Glob pattern(s) to exclude files
+```bash
+repo-md 'src/features/checkout/**/*' --include-ln
+```
 
-Examples:
-    # Share model and specs, excluding node_modules/ build files
-    repo-md '**/*.rb' '**/*_spec.rb' --ignore-glob 'node_modules/**/*'
+This provides the LLM with the complete source code and the Cargo.toml dependency file.
 
-    # Share an entire feature's worth of code, with line numbers for debugging
-    repo-md 'app/{models,controllers}/payment/**/*' --include-ln
-
-positional arguments:
-  glob_patterns
-
-options:
-  -h, --help            show this help message and exit
-  --ignore-glob IGNORE_GLOB
-  --include-ln
+```bash
+repo-md 'src/features/checkout/**/*' --include-ln
 ```
