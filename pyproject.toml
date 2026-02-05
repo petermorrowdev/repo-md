@@ -15,8 +15,6 @@ indent-width = 4
 exclude = [
     ".venv",
     ".git",
-    ".pytest_cache",
-    ".mypy_cache",
 ]
 
 [tool.ruff.lint]
