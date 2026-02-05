@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Concatenates text files via glob patterns into a single markdown file for LLMs.
 
 This script processes one or more glob patterns to create a formatted markdown output
