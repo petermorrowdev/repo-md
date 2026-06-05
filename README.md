@@ -46,9 +46,8 @@ caches.
 repo-md '**/*.go' --ignore-glob 'vendor/**/*'
 ```
 
-Include line numbers when you want to ask the LLM "needle in haystack" style
-questions like "Where do we call the stripe API? Respond with precise path and
-line numbers."
+Include line numbers when you want to ask the LLM questions like "Where do we
+call the stripe API? Respond with precise path and line numbers."
 
 ```bash
 repo-md 'src/features/checkout/**/*' --include-ln
